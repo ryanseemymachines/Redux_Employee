@@ -1,0 +1,16 @@
+.addBtn {
+  width: fit-content;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1em;
+  border-radius: 16px;
+  background-color: black;
+  color: white;
+}
+
+.addBtn:hover {
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(185, 184, 184);
+  color: black;
+}
