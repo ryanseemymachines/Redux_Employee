@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 
 const EmployeeCard = ({ emp }) => {
-  const dob = new Date(emp.dob);
+  const dob = new Date(emp.dob); 
   return (
     <div className={styles.employeeCard}>
       <h3>{emp.name}</h3>

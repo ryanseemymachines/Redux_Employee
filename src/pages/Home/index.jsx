@@ -14,9 +14,10 @@ const Home = () => {
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isComponentVisible, setIsComponentVisible] = useState(false);
-  const toggleComponentVisibility = () => {
-    setIsComponentVisible(!isComponentVisible);
+  const [isListVisible, setIsListVisible] = useState(false);
+
+  const toggleListVisibility = () => {
+    setIsListVisible(!isListVisible);
   };
 
   const openModal = () => setIsModalOpen(true);
@@ -30,11 +31,11 @@ const Home = () => {
         <Button
           type="button"
           label="View Employee List"
-          onClick={toggleComponentVisibility}
+          onClick={toggleListVisibility}
         />
       </div>
 
-      {isComponentVisible && <EmployeeList />}
+      {isListVisible && <EmployeeList />}
       {isModalOpen && <NewEmployee onClose={closeModal} />}
     </div>
   );

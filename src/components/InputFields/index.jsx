@@ -1,7 +1,8 @@
 import styles from "./index.module.css";
 
 const InputField = (props) => {
-  const { type, name, placeholder, value, onChange } = props;
+  const { type, name, placeholder, value, onChange, min, max } = props;
+
   return (
     <input
       className={styles.textInput}
@@ -10,6 +11,8 @@ const InputField = (props) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      min={min}
+      max={max}
     />
   );
 };
