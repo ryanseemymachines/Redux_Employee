@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
-import { addEmployee } from "../../redux/employeeSplice";
+import { addEmployee } from "../../redux/employeeActions/addEmployee";
 import InputFields from "../InputFields";
 import Button from "../Button";
 import styles from "./index.module.css";

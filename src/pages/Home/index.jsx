@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchEmployee } from "../../redux/employeeSplice";
+import { fetchEmployee } from "../../redux/employeeActions/fetchEmployee";
 import Button from "../../components/Button";
 import NewEmployee from "../../components/NewEmployee";
 import EmployeeList from "../../components/EmployeeList";

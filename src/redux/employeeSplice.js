@@ -1,26 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-const API = "https://6580190d6ae0629a3f54561f.mockapi.io/api/v1/employee";
-
-export const fetchEmployee = createAsyncThunk(
-  "employee/fetchEmployee",
-  async () => {
-    const response = await fetch(API);
-    return response.json();
-  }
-);
-
-export const addEmployee = createAsyncThunk(
-  "employee/addEmployee",
-  async (data) => {
-    const res = await fetch(API, {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    return res.json();
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 const employeeSlice = createSlice({
   name: "employee",
@@ -29,26 +7,27 @@ const employeeSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
+  reducers: {
+    fetchPending: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchSuccess: (state, action) => {
+      state.loading = false;
+      state.employees = action.payload;
+    },
+    fetchError: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
 
-      .addCase(fetchEmployee.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchEmployee.fulfilled, (state, action) => {
-        state.loading = false;
-        state.employees = action.payload;
-      })
-      .addCase(fetchEmployee.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
-      .addCase(addEmployee.fulfilled, (state, action) => {
-        state.employees.push(action.payload);
-      });
+    addSuccess: (state, action) => {
+      state.employees.push(action.payload);
+    },
   },
 });
+
+export const { fetchPending, fetchSuccess, fetchError, addSuccess } =
+  employeeSlice.actions;
 
 export default employeeSlice.reducer;
